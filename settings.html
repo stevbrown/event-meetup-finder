@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="img/media/logo.svg">
+    
+        <script type="module" src="lib/js/activation.js"></script>
+        <script type="module" src="lib/js/settings.js"></script>
+        <script type="module" src="lib/js/event.js"></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                fetch('http://127.0.0.1:3000/api/check-auth', {
+                method: 'GET',
+                credentials: 'include'
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        window.location.href = 'verify.html';
+                    } else {
+                        loadUserInfo();
+                    }
+                })
+                .catch(error => console.error('Ошибка:', error));
+            });
+        </script>
+    
+        <title>• Главная — Настройки</title>
+    </head>
+<body id="settings-page">
+    <div class="container">
+        <div class="frame">
+            <header>
+                <div class="logo">
+                    <a href="index.html"><img src="img/media/full-logo.svg" alt="ЧТО-ТО НОВОЕ"></a>
+                </div>
+            </header>
+            <div class="main">
+                <div class="menu">
+                    <div class="list">
+                        <button onclick="openOption('main')"><img src="img/background/button-pattern/house.svg" alt="🏠">Главная</button>
+                        <button onclick="openOption('personal')"><img src="img/background/button-pattern/identification-badge.svg" alt="📇">Личные данные</button>
+                        <button id="organizer-panel" onclick="openOption('organizer')"><img src="img/background/button-pattern/hands-clapping.svg" alt="👏">Управление мероприятиями</button>
+                        <button id="admin-panel" onclick="openOption('admin')"><img src="img/background/button-pattern/terminal-window.svg" alt="🏗️">Панель администратора</button>
+                        <button onclick="openOption('security')"><img src="img/background/button-pattern/shield-check.svg" alt="🛡️">Безопасность и вход</button>
+                    </div>
+                    <div class="back">
+                        <a href="site.html"><button><img src="img/background/button-pattern/arrow-u-up-left.svg" alt="🔙">Вернуться на сайт</button></a>
+                    </div>
+                </div>
+                <div id="main" class="operational">
+                    <div class="main">
+                        <div class="user-block" onclick="openOption('personal')">
+                            <div class="wrapper">
+                                <div class="avatar">
+                                    <p id="initials" data-initials="true">ИФ</p>
+                                </div>
+                                <div class="user-info">
+                                    <p data-user="true">Имя Фамилия</p>
+                                    <p id="id" data-id="true">ID: 000000000</p>
+                                </div>
+                            </div>
+                            <div class="end-doublearrow">
+                                <img src="img/background/button-pattern/caret-double-right.svg" alt=">>">
+                            </div>
+                        </div>
+                        <div id="protected" class="protected">
+                            <img src="img/background/button-pattern/shield-plus.svg" alt="🛡️">
+                            <p>Аккаунт надёжно защищён!</p>
+                        </div>
+                        <div id="organizered" class="organizered">
+                            <img src="img/background/button-pattern/seal-check.svg" alt="☑️">
+                            <p>Доступны права организатора.</p>
+                        </div>
+                        <div id="admined" class="admined">
+                            <img src="img/background/button-pattern/seal-check.svg" alt="🤖">
+                            <p>Доступны права администратора.</p>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <p>Основные используемые действия</p>
+                        <div class="action" onclick="openChangePassword()">
+                            <div class="wrapper">
+                                <img src="img/background/button-pattern/key.svg" alt="🔑">
+                                <div class="title">
+                                    <p>Пароль</p>
+                                    <p id="changed-at" data-password="true">Был изменён 01.01.1900</p>
+                                </div>
+                            </div>
+                            <div class="end-arrow">
+                                <img src="img/background/button-pattern/caret-right.svg" alt=">">
+                            </div>
+                        </div>
+                        <div class="action" onclick="openChangePhone()">
+                            <div class="wrapper">
+                                <img src="img/background/button-pattern/device-mobile-speaker.svg" alt="📱">
+                                <div class="title">
+                                    <p>Телефон</p>
+                                    <p id="phone" data-phone="true">+7 *** *** ** 01</p>
+                                </div>
+                            </div>
+                            <div class="end-arrow">
+                                <img src="img/background/button-pattern/caret-right.svg" alt=">">
+                            </div>
+                        </div>
+                        <div class="action" onclick="openChangeEmail()">
+                            <div class="wrapper">
+                                <img src="img/background/button-pattern/envelope.svg" alt="✉️">
+                                <div class="title">
+                                    <p>Электронная почта</p>
+                                    <p id="email" data-email="true">example@example.ru</p>
+                                </div>
+                            </div>
+                            <div class="end-arrow">
+                                <img src="img/background/button-pattern/caret-right.svg" alt=">">
+                            </div>
+                        </div>
+                        <div class="action" onclick="openOption('personal')">
+                            <div class="wrapper">
+                                <img src="img/background/button-pattern/cake.svg" alt="🎂">
+                                <div class="title">
+                                    <p>Дата рождения</p>
+                                    <p id="subtitle">Изменить дату рождения</p>
+                                </div>
+                            </div>
+                            <div class="end-arrow">
+                                <img src="img/background/button-pattern/caret-right.svg" alt=">">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="personal" class="operational">
+                    <div class="user-block">
+                        <div class="wrapper">
+                            <div class="avatar">
+                                <p data-initials="true">ИФ</p>
+                            </div>
+                            <div class="user-info">
+                                <p id="user" data-user="true">Имя Фамилия</p>
+                                <div class="id">
+                                    <p id="id" data-id="true">ID: 000000000</p>
+                                    <button onclick="copyToClipboard()"><img src="img/background/button-pattern/copy-simple.svg" alt="#"></button>
+                                </div>                         
+                            </div>
+                        </div>
+                        <div class="personal">
+                            <div class="input">
+                                <img src="img/background/button-pattern/user.svg" alt="И">
+                                <input id="name-in" type="text" maxlength="50" placeholder="Имя" oninput="validateName(event)">
+                            </div>
+                            <div class="input">
+                                <img src="img/background/button-pattern/users-three.svg" alt="Ф">
+                                <input id="surname-in" type="text" maxlength="100" placeholder="Фамилия" oninput="validateName(event)">
+                            </div>
+                        </div>
+                        <div class="details">
+                            <div class="wrapper">
+                                <div class="input">
+                                    <img src="img/background/button-pattern/hand-eye.svg" alt="П">
+                                    <select id="gender-in">
+                                        <option value="Мужской">♂️ Мужской</option>
+                                        <option value="Женский">♀️ Женский</option>
+                                        <option value="Не указан">🐏 Неизвестный</option>
+                                    </select>
+                                </div>                
+                                <div class="input">
+                                    <img src="img/background/button-pattern/gift.svg" alt="ДР">
+                                    <input id="dob-in" type="date" min="1900-01-01">
+                                </div>
+                            </div>
+                            <div class="input">
+                                <img src="img/background/button-pattern/map-pin.svg" alt="Г">
+                                <input id="city-in" list="cities" type="text" maxlength="100" placeholder="Город" oninput="validateCity(event)">
+                                <datalist id="cities"></datalist>
+                            </div>
+                        </div>
+                        <button onclick="savePersonal()">Сохранить</button>
+                    </div>
+                    <div class="options">
+                        <p>Действия с аккаунтом</p>
+                        <div class="action" onclick="confirmDelete()">
+                            <div class="wrapper">
+                                <img src="img/background/button-pattern/trash.svg" alt="🗑️">
+                                <div class="title">
+                                    <p>Удалить аккаунт</p>
+                                    <p id="subtitle">Вы можете полностью удалить аккаунт и все данные в нём</p>
+                                </div>
+                            </div>
+                            <div class="end-arrow">
+                                <img src="img/background/button-pattern/caret-right.svg" alt=">">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <div class="action" onclick="logOut()">
+                            <div class="wrapper">
+                                <img src="img/background/button-pattern/door-open.svg" alt="🚪">
+                                <div class="title">
+                                    <p>Выйти из аккаунта</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="organizer" class="operational">
+                    <div id="createEvent" class="options">
+                        <p id="title-event">Создание нового мероприятия</p>
+                        <div class="step-wrapper">
+                            <div id="step1" class="step">
+                                <div id="c-title" class="input">
+                                    <img src="img/background/button-pattern/text-H.svg" alt="H">
+                                    <input type="text" id="title-in" placeholder="Введите заголовок">
+                                </div>
+                                <div id="c-description" class="input">
+                                    <img src="img/background/button-pattern/text-indent.svg" alt=">|">
+                                    <textarea id="description-in" placeholder="Введите описание мероприятия"></textarea>
+                                </div>
+                                <div id="c-image" class="input">
+                                    <input type="file" id="event-image" accept="image/*" onchange="validateAndShowPreview(event)">
+                                    <img id="preview">
+                                </div>
+                                <button onclick="openNextStep()">Далее</button>
+                            </div>
+                            <div id="step2" class="step">
+                                <div class="wrapper">
+                                    <div id="c-date" class="input">
+                                        <img src="img/background/button-pattern/calendar-dots.svg" alt="D">
+                                        <input type="date" id="e-date-in">
+                                    </div>
+                                    <div id="c-time" class="input">
+                                        <img src="img/background/button-pattern/clock.svg" alt="T">
+                                        <input type="time" id="time-in">
+                                    </div>
+                                </div>
+                                <div class="wrapper">
+                                    <div id="c-city" class="input">
+                                        <img src="img/background/button-pattern/map-pin.svg" alt="C">
+                                        <input id="e-city-in" list="cities" type="text" maxlength="100" placeholder="В каком городе?" oninput="validateCity(event)">
+                                        <datalist id="cities"></datalist>
+                                    </div>
+                                    <div id="c-building" class="input">
+                                        <img src="img/background/button-pattern/buildings.svg" alt="B">
+                                        <input type="text" id="building-in" placeholder="Где же это будет?">
+                                    </div>
+                                </div>
+                                <div class="wrapper">
+                                    <div id="c-category" class="input">
+                                        <img src="img/background/button-pattern/funnel.svg" alt="C">
+                                        <select id="category-in" onchange="updateSubcategories()">
+                                            <option value="cinema">🎬 Кино</option>
+                                            <option value="concert">🪗 Концерт</option>
+                                            <option value="theatre">🎭 Театр</option>
+                                            <option value="sport">🏅 Спорт</option>
+                                        </select>
+                                    </div>
+                                    <div id="c-category" class="input">
+                                        <select id="subcategory-in">
+                                            <option value="drama">🎭 Драма</option>
+                                            <option value="comedy">😂 Комедия</option>
+                                            <option value="action">🔥 Боевик</option>
+                                            <option value="sci-fi">🚀 Фантастика</option>
+                                            <option value="horror">👻 Ужасы</option>
+                                            <option value="thriller">😱 Триллер</option>
+                                            <option value="romance">💕 Мелодрама</option>
+                                            <option value="animation">🎨 Анимация</option>
+                                            <option value="documentary">📚 Документальный</option>
+                                            <option value="adventure">🧭 Приключения</option>
+                                            <option value="fantasy">🧙 Фэнтези</option>
+                                            <option value="biography">👤 Биография</option>
+                                            <option value="history">🏛️ История</option>
+                                            <option value="crime">🕵️ Криминал</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="wrapper">
+                                    <div id="c-url" class="input">
+                                        <img src="img/background/button-pattern/ticket.svg" alt="T">
+                                        <input type="text" id="url-in" placeholder="((ссылка на билет))">
+                                    </div>
+                                    <div id="c-price" class="input">
+                                        <img src="img/background/button-pattern/currency-rub.svg" alt="P">
+                                        <input type="number" id="event-price" step="50" placeholder="Цена">
+                                    </div>
+                                </div>
+                                <button onclick="submitEvent()">Создать мероприятие</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <p>Запланированные события</p>
+                        <div id="public" class="events"></div>
+                    </div>
+                    <div class="options">
+                        <p>Архив событий</p>
+                        <div id="ended" class="events"></div>
+                    </div>
+                    <div class="options">
+                        <p>На проверке</p>
+                        <div id="checking" class="events"></div>
+                    </div>
+                </div>
+                <button id="organizerImg" class="add" onclick="openCreateEvent()"><img id="addImg" src="img/background/button-pattern/+.svg" alt="+"></button>
+                <div id="admin" class="operational">
+                    <div class="options">
+                        <p>Запланированные события</p>
+                        <div id="a-public" class="events"></div>
+                    </div>
+                    <div class="options">
+                        <p>Архив событий</p>
+                        <div id="a-ended" class="events"></div>
+                    </div>
+                    <div class="options">
+                        <p>На проверке</p>
+                        <div id="a-checking" class="events"></div>
+                    </div>
+                </div>
+                <div id="security" class="operational">
+                    <div id="protect" class="protect">
+                        <img src="img/background/button-pattern/siren.svg" alt="🤖">
+                        <div class="title">
+                            <p>Что делать, если аккаунт взломали?</p>
+                            <p id="subtitle">Узнайте, как защитить аккаунт, если кто-то кроме вас получил к нему доступ</p>
+                        </div>                       
+                    </div>
+                    <div class="options">
+                        <div class="title">
+                            <p id="title">Данные аккаунта</p>
+                            <p id="subtitle">Видно только вам</p>
+                        </div>
+                        <div class="action" onclick="openChangePhone()">
+                            <div class="wrapper">
+                                <img src="img/background/button-pattern/device-mobile-speaker.svg" alt="📱">
+                                <div class="title">
+                                    <p>Телефон</p>
+                                    <p id="phone" data-phone="true">+7 *** *** ** 01</p>
+                                </div>
+                            </div>
+                            <div class="end-arrow">
+                                <img src="img/background/button-pattern/caret-right.svg" alt=">">
+                            </div>
+                        </div>
+                        <div class="action" onclick="openChangeEmail()">
+                            <div class="wrapper">
+                                <img src="img/background/button-pattern/envelope.svg" alt="✉️">
+                                <div class="title">
+                                    <p>Электронная почта</p>
+                                    <p id="email" data-email="true">example@example.ru</p>
+                                </div>
+                            </div>
+                            <div class="end-arrow">
+                                <img src="img/background/button-pattern/caret-right.svg" alt=">">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <p>Способы входа</p>
+                        <div class="action" onclick="openChangePassword()">
+                            <div class="wrapper">
+                                <img src="img/background/button-pattern/key.svg" alt="🔑">
+                                <div class="title">
+                                    <p>Пароль</p>
+                                    <p id="changed-at" data-password="true">Был изменён 01.01.1900</p>
+                                </div>
+                            </div>
+                            <div class="end-arrow">
+                                <img src="img/background/button-pattern/caret-right.svg" alt=">">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="alerts">
+                <!-- <div class="alert-box">
+                            <img src="img/alerts/siren.svg" alt="ERR">
+                            <p>Ошибка! Текст ошибки..</p>
+                            <button><img src="img/alerts/X.svg" alt="X"></button>
+                        </div>
+                        <div class="alert-box">
+                            <img src="img/alerts/warning.svg" alt="WRN">
+                            <p>Предупреждение! Текст предупреждения..</p>
+                            <button><img src="img/alerts/X.svg" alt="X"></button>
+                        </div>
+                        <div class="alert-box">
+                            <img src="img/alerts/check-circle.svg" alt="SUC">
+                            <p>Успех! Текст успеха..</p>
+                            <button><img src="img/alerts/X.svg" alt="X"></button>
+                        </div> -->
+            </div>
+            <div id="modals" class="modals">
+                <!-- <div class="modal-content">
+                    <p>Вы уверены, что хотите удалить аккаунт?<br>Это действие нельзя будет отменить.</p>
+                    <div class="modal-buttons">
+                        <button id="confirmButton" class="modal-btn-confirm">Удалить</button>
+                        <button id="cancelButton" class="modal-btn-cancel">Отмена</button>
+                    </div>
+                    <img id="background" src="img/online-check-in.svg">
+                    <div class="wrapper">
+                        <div class="inputs">
+                            <div class="input">
+                                <img src="img/background/button-pattern/key.svg" alt="СП">
+                                <input id="o-password-in" type="text" maxlength="255" placeholder="Так-с! Нужен твой старый пароль.." oninput="blockCyrillic(event)" onblur="validateCheckPassword(event)">
+                            </div>
+                            <div class="input">
+                                <img src="img/background/button-pattern/key.svg" alt="НП">
+                                <input id="c-password-in" type="password" maxlength="255" placeholder="Отлично! Теперь новый пароль.." oninput="blockCyrillic(event)" onblur="validateCheckPassword(event)">
+                            </div>
+                            <div class="input">
+                                <img src="img/background/button-pattern/keyhole.svg" alt="ПП">
+                                <input id="c-confirmPassword-in" type="password" maxlength="255" placeholder="Давай-ка еще разок, чтобы без ошибок!" oninput="blockCyrillic(event)">
+                            </div>
+                        </div>
+                        <div class="modal-buttons">
+                            <button id="changeButton" class="change" onclick="changePassword()">Изменить</button>
+                            <button id="cancelButton" class="cancel">Отмена</button>
+                        </div>
+                    </div>
+                </div> -->
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="img/media/logo.svg">
+
+    <script type="module" src="lib/js/activation.js"></script>
+    <script type="module" src="lib/js/verify.js"></script>
+
+    <title>• Домашняя страница</title>
+</head>
+<body id="home-page">
+    <div class="container">
+        <div class="frame">
+            <div class="introductory">
+                <header>
+                    <div class="logo">
+                        <img src="img/media/full-logo.svg" alt="ЧТО-ТО НОВОЕ">
+                    </div>
+                    <nav>
+                        <button class="main-p" onclick="scrollToElement('.expectancy')">Главная</button>
+                        <a href="site.html"><button class="event">Мероприятия</button></a>
+                        <button class="contacts" onclick="scrollToElement('.us .contacts')">Контакты</button>
+                        <button class="aboutus" onclick="scrollToElement('.us .aboutus')">О нас</button>
+                        <a href="settings.html"><button class="profile">Личный кабинет</button></a>
+                    </nav>
+                </header>
+                <div class="main">
+                    <div class="wrapper">
+                        <div class="title">
+                            <div class="header">
+                                <p class="up">Будь в курсе, Будь там!</p>
+                                <img src="img/background/header-under.svg">
+                            </div>
+                            <p class="subtitle">Добро пожаловать на платформу "Что-то Новое" – ваш персональный гид по событиям и местам встреч! Здесь вы всегда найдете актуальную информацию о самых интересных мероприятиях рядом с вами: от концертов и выставок до уютных встреч в кафе и масштабных фестивалей.</p>
+                        </div>
+                        <img src="img/main-img.svg" class="main-img">
+                    </div>
+                    <div class="actions">
+                        <a href="site.html"><button class="start"><img src="img/background/button-pattern/X.svg"> Погрузиться в события <img src="img/background/button-pattern/X.svg"></button></a>
+                        <button class="newuser" onclick="scrollToElement('.registration')"><img src="img/background/button-pattern/X.svg"> Я новенький! <img src="img/background/button-pattern/X.svg"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-background">
+                <div class="expectancy">
+                    <div class="title">
+                        <p class="title">Что же вас ждет?!</p>
+                        <img src="img/background/expectancy-under.svg">
+                    </div>
+                    <div class="paragraphs">
+                        <div class="paragraph">
+                            <img src="img/background/paragraphs-line.svg" alt="-">
+                            <p class="number">01</p>
+                            <p class="description">Афиша событий: Все мероприятия вашего города в одном месте. Удобный поиск поможет быстро найти то, что вам интересно.</p>
+                        </div>
+                        <div class="paragraph">
+                            <img src="img/background/paragraphs-line.svg" alt="-">
+                            <p class="number">02</p>
+                            <p class="description">Сообщество единомышленников: Поделитесь впечатлениями, находите новых друзей и участвуйте в обсуждениях.</p>
+                        </div>
+                        <div class="paragraph">
+                            <img src="img/background/paragraphs-line.svg" alt="-">
+                            <p class="number">03</p>
+                            <p class="description">Персональные рекомендации: Получайте предложения, которые соответствуют вашим интересам.</p>
+                        </div>
+                        <div class="paragraph">
+                            <img src="img/background/paragraphs-line.svg" alt="-">
+                            <p class="number">04</p>
+                            <p class="description">Добавьте свое мероприятие: Организуете событие? Расскажите о нем миру - это просто!</p>
+                        </div>
+                    </div>
+                    <div class="poster">
+                        <p>Откройте для себя новые возможности для общения и отдыха. Больше не нужно тратить часы в поисках идей для досуга - мы уже сделали все за вас!</p>
+                    </div>               
+                </div>
+                <div class="registration">
+                    <div class="title">
+                        <p>Присоединяйтесь к нашей платформе, чтобы всегда быть в центре событий - всего за несколько шагов!</p>
+                    </div>
+                    <div class="wrapper-steps">
+                        <div id="step1" class="step1">
+                            <div class="box">
+                                <svg width="500" height="400" xmlns="http://www.w3.org/2000/svg" class="border">
+                                    <rect width="500" height="400" 
+                                        fill="none" 
+                                        stroke="#B6BEC4" 
+                                        stroke-weight="1" 
+                                        stroke-dasharray="10,10" 
+                                        rx="20" ry="20" />
+                                </svg>
+                                <div class="title">
+                                    <p class="reg">Регистрация</p>
+                                    <p class="step">1-й шаг</p>
+                                </div>
+                                <div class="wrapper">
+                                    <div class="inputs">
+                                        <div class="input">
+                                            <img src="img/background/button-pattern/hand-waving.svg" alt="Л">
+                                            <input id="login-in" type="text" maxlength="50" placeholder="Придумай логин.." oninput="validateLogin(event)" onblur="validateCheckLogin(event)">
+                                        </div>
+                                        <div class="input">
+                                            <img src="img/background/button-pattern/key.svg" alt="П">
+                                            <input id="password-in" type="password" maxlength="255" placeholder="Отлично! Теперь пароль.." oninput="blockCyrillic(event)" onblur="validateCheckPassword(event)">
+                                        </div>
+                                        <div class="input">
+                                            <img src="img/background/button-pattern/keyhole.svg" alt="ПП">
+                                            <input id="confirmPassword-in" type="password" maxlength="255" placeholder="Давай-ка еще разок, чтобы без ошибок!" oninput="blockCyrillic(event)">
+                                        </div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <img src="img/background/cabin-baggage.svg">
+                                        <button class="next" onclick="nextStep()">Продолжить <img src="img/background/button-pattern/arrow-fat-lines-right.svg" alt="->"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="step2" class="step2">
+                            <div class="box">
+                                <svg width="500" height="490" xmlns="http://www.w3.org/2000/svg" class="border">
+                                    <rect width="500" height="490" 
+                                        fill="none" 
+                                        stroke="#B6BEC4" 
+                                        stroke-weight="1" 
+                                        stroke-dasharray="10,10" 
+                                        rx="20" ry="20" />
+                                </svg>
+                                <div class="title">
+                                    <p class="reg">Регистрация</p>
+                                    <p class="step">2-й шаг</p>
+                                </div>
+                                <div class="wrapper">
+                                    <div class="inputs">
+                                        <div class="input">
+                                            <img src="img/background/button-pattern/envelope-open.svg" alt="П">
+                                            <input id="email-in" type="email" maxlength="250" placeholder="Проверим, что почтовые голуби долетят туда, куда надо.." oninput="validateGmail(event)" onblur="validateCheckGmail(event)">
+                                        </div>
+                                        <div class="input">
+                                            <img src="img/background/button-pattern/user.svg" alt="И">
+                                            <input id="name-in" type="text" maxlength="50" placeholder="Как вас зовут? Чтобы не звать просто “Эй, ты!“" oninput="validateName(event)">
+                                        </div>
+                                        <div class="input">
+                                            <img src="img/background/button-pattern/users-three.svg" alt="Ф">
+                                            <input id="surname-in" type="text" maxlength="100" placeholder="Давайте фамилию – так вас точно не перепутают." oninput="validateName(event)">
+                                        </div>
+                                        <div class="wrapper">
+                                            <div class="inputDis">
+                                                <img src="img/background/button-pattern/gift.svg" alt="ДР">
+                                                <input id="dob-in" type="date" min="1900-01-01">
+                                            </div>
+                                            <div class="inputDis">
+                                                <img src="img/background/button-pattern/map-pin.svg" alt="Г">
+                                                <input id="city-in" list="cities" type="text" maxlength="100" placeholder="Где вы живете?" oninput="validateCity(event)">
+                                                <datalist id="cities"></datalist>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                    <div class="wrapper">
+                                        <img src="img/background/cabin-baggage.svg">
+                                        <button class="next" onclick="finishRegistration()">Вперед к событиям! <img src="img/background/button-pattern/arrow-fat-lines-right.svg" alt="->"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="us">
+                <div class="aboutus">
+                    <div class="title">
+                        <p>Наша история в нескольких словах</p>
+                    </div>
+                    <div class="subtitlee">
+                        <p>Идея создания нашей платформы появилась совершенно случайно – на одной скучной вечеринке. Мы сидели втроем в уголке и ворчали, что в городе никогда ничего интересного не происходит. Но затем один из нас проверил афишу событий и... оказалось, что в соседнем квартале в этот самый момент проходит концерт нашей любимой группы, о котором мы просто не знали!
+                            <br>
+                            <br>Тогда мы задумались: почему так трудно узнать, что происходит рядом? Почему нельзя зайти в одно место, где будет собрана вся информация, и сразу найти мероприятие по душе? А если еще и делиться впечатлениями с друзьями – было бы идеально!
+                            <br>
+                            <br>Так родилась идея "Что-то Новое". Мы решили создать платформу, которая не просто собирает события, но и объединяет людей. Вдохновленные этой мыслью, мы за несколько месяцев разработали удобный сервис, где каждый найдет свое место для встреч, эмоций и открытий.
+                            <br>
+                            <br>С тех пор мы продолжаем развиваться, чтобы вы всегда были в курсе и всегда были там, где интересно. "Что-то новое" – это не просто сайт, это история о том, как случайное открытие может изменить жизнь!
+                        </p>
+                    </div>
+                    <div class="gallery">
+                        <img src="img/background/IMG_9742.svg">
+                        <img src="img/background/IMG_9743.svg">
+                        <img src="img/background/IMG_9740.svg">
+                    </div>
+                </div>
+                <div class="contacts">
+                    <div class="title">
+                        <p>Социальные сети</p>
+                    </div>
+                    <div class="line1">
+                        <div class="wrapper">
+                            <div class="media">
+                                <img src="img/media/InstagramLogo.svg" alt="I">
+                                <p>@sthnewoff</p>
+                            </div>
+                            <div class="media">
+                                <img src="img/media/TelegramLogo.svg" alt="TG">
+                                <p>@sthnewoff</p>
+                            </div>
+                        </div>
+                        <div class="wrapper">
+                            <div class="media">
+                                <img src="img/media/TiktokLogo.svg" alt="TT">
+                                <p>@sthnewoff</p>
+                            </div>
+                            <div class="media">
+                                <img src="img/media/YoutubeLogo.svg" alt="YT">
+                                <p>@sthnewoff</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line2">
+                        <p>+7 (347) 776 34 25</p>
+                        <p>support.sthnnew@yandex.ru</p>
+                        <p>+373 533 12 345</p>
+                    </div>
+                </div>
+            </div>
+            <div class="alerts">
+                <!-- <div class="alert-box">
+                            <img src="img/alerts/siren.svg" alt="ERR">
+                            <p>Ошибка! Текст ошибки..</p>
+                            <button><img src="img/alerts/X.svg" alt="X"></button>
+                        </div>
+                        <div class="alert-box">
+                            <img src="img/alerts/warning.svg" alt="WRN">
+                            <p>Предупреждение! Текст предупреждения..</p>
+                            <button><img src="img/alerts/X.svg" alt="X"></button>
+                        </div>
+                        <div class="alert-box">
+                            <img src="img/alerts/check-circle.svg" alt="SUC">
+                            <p>Успех! Текст успеха..</p>
+                            <button><img src="img/alerts/X.svg" alt="X"></button>
+                        </div> -->
+            </div>
+        </div>
+        <footer>
+            <div class="frame">
+                <div class="wrapper">
+                    <div class="left">
+                        <div class="logo">
+                            <img src="img/media/logo.svg" alt="ЧН">
+                            <p>Каждый день лучшие мероприятия рядом с вами.</p>
+                        </div>
+                        <img src="img/media/madetag.svg" alt="Сделано в России!">
+                    </div>
+                    <img id="footer-line" src="img/background/footer-line.svg" alt="|">
+                    <div class="center">
+                        <div class="menu">
+                            <p>Меню <img src="img/background/menu-line.svg" alt="--#"></p>
+                            <div class="list">
+                                <button onclick="scrollToElement('.introductory')">Главная страница</button>
+                                <a href="site.html"><button>Мероприятия</button></a>
+                                <a href="settings.html"><button>Личный кабинет</button></a>
+                                <button onclick="scrollToElement('.us .aboutus')">О нас</button>
+                            </div>
+                        </div>
+                        <div class="policy">
+                            <a href="https://yandex.ru/legal/rules/index.html"><button>Terms & Condition</button></a>
+                            <a href="https://yandex.ru/legal/confidential/index.html"><button>Privacy Policy</button></a>
+                            <a href="https://yandex.ru/legal/cookies_policy/"><button>Cookie Policy</button></a>
+                        </div>
+                    </div>
+                    <img id="footer-line" src="img/background/footer-line.svg" alt="|">
+                    <div class="right">
+                        <div class="media">
+                            <a href="https://vk.com/"><button><img src="img/media/VkontakteLogo.svg" alt="VK"></button></a>
+                            <a href="https://instagram.com/"><button><img src="img/media/InstagramLogo.svg" alt="I"></button></a>
+                            <a href="https://web.telegram.org/"><button><img src="img/media/TelegramLogo.svg" alt="TG"></button></a>
+                            <a href="https://www.tiktok.com/"><button><img src="img/media/TiktokLogo.svg" alt="TT"></button></a>
+                            <a href="https://www.youtube.com/"><button><img src="img/media/YoutubeLogo.svg" alt="YT"></button></a>
+                        </div>
+                        <p>support.sthnnew@yandex.ru</p>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>©️ 2024 cyril_methodius. All right reserved</p>
+                </div> 
+            </div>      
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="img/media/logo.svg">
+
+    <script type="module" src="lib/js/activation.js"></script>
+    <script type="module" src="lib/js/site.js"></script>
+    <!-- <script type="module" src="lib/js/verify.js"></script> -->
+    <script type="module" src="lib/js/post.js"></script>
+    <script src="Здесь API ключ Yandex Map" type="text/javascript"></script>
+
+    <title>• Загрузка..</title>
+</head>
+<body id="site">
+    <div class="container">
+        <div class="frame">
+            <header>
+                <div class="logo">
+                    <a href="site.html"><img src="img/media/full-logo.svg" alt="ЧТО-ТО НОВОЕ"></a>
+                </div>
+                <div class="search">
+                    <!-- <div class="search-wrapp">
+                        <img src="img/background/button-pattern/magnifying-glass.svg" alt="">
+                        <input type="text" name="" id="" placeholder="Поиск">
+                    </div>
+                    <div class="city">
+                        <img src="img/background/button-pattern/map-pin.svg" alt="">
+                        <p data-city="true">Краснодар</p>
+                    </div> -->
+                </div>
+                <div class="wrapper">
+                    <div class="statistics">
+                        <div id="favorites" class="statistic">
+                            <img src="img/background/button-pattern/folder-Star.svg" alt="">
+                            <p>Избранные</p>
+                            <p id="statisticFavorite">(NaN)</p>
+                        </div>
+                        <div id="posts" class="statistic">
+                            <img src="img/background/button-pattern/newspaper-clipping.svg" alt="">
+                            <p id="statisticCreate">NaN</p>
+                        </div>
+                        <div id="likes" class="statistic">
+                            <img src="img/background/button-pattern/heart.svg" alt="">
+                            <p id="statisticLike">NaN</p>
+                        </div>
+                    </div>
+                    <div class="user-wrapp">
+                        <div class="user-block">
+                            <div class="user">
+                                <p id="user-initials" data-initials="true">ИФ</p>
+                            </div>
+                            <div class="user-info">
+                                <p id="name" data-user="true">Имя Фамилия</p>
+                                <p id="email" data-email="true">example@example.ru</p>
+                            </div>
+                        </div>
+                        <div class="button-block">
+                            <a href="settings.html"><button><img src="img/background/button-pattern/gear-six.svg" alt="⚙️">Настройки</button></a>
+                            <button id="exit" onclick="logOut()"><img src="img/background/button-pattern/door-open2.svg" alt="🚪">Выход</button>
+                        </div>
+                    </div>                       
+                </div>
+                
+            </header>
+            <div class="post">
+                <div class="post-wrapper">
+                    <div class="header">
+                        <div class="wrapper">
+                            <img id="imgE" src="" alt="">
+                            <div class="information">
+                                <div class="info">
+                                    <p id="category">Категория • Подкатегория</p>
+                                </div>
+                                <div class="title">
+                                    <p id="title">Название мероприятия</p>
+                                </div>
+                                <div class="location">
+                                    <p id="city">г. Город • Здание</p>
+                                </div>
+                                <div class="buy">
+                                    <button id="buy-ticket">Купить билет</button>
+                                    <p id="price">Цена:</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subtitle">
+                        <p id="date"></p>                    
+                        <div class="description">
+                            <p>Основная информация</p>
+                            <p id="description">Описание</p>
+                        </div>
+                        <div class="address">
+                            <p>Адрес</p>
+                            <div class="map-wrapper">
+                                <div id="map"></div>
+                            </div>
+                            <p id="address">Адрес</p>
+                        </div>
+                        <div class="comments">
+                            <p>Комментарии и отзывы</p>
+                            <div class="comment-wrapper">
+                                <input type="text" id="comment-in" placeholder="Оставьте комментарий о событии...">
+                                <button id="comment-send"><img src="img/background/button-pattern/PaperPlaneRight.svg"></button>
+                            </div>
+                            <div class="users-comments"></div>
+                        </div>
+                        <div class="events">
+                            <p id="title-ee">Мероприятия, которые могут вас заинтересовать</p>
+                            <div id="thisCat" class="posts"></div>
+                            <p id="title-ee">Избранные мероприятия</p>
+                            <div id="favoritesCat" class="posts"></div>
+                        </div>
+                    </div>
+                    </div>
+                <div class="created">
+                    <p id="created_by">©Неизвестный автор</p>
+                    <p id="created_at">Дата</p>
+                </div>  
+            </div>
+            <div class="alerts">
+                <!-- <div class="alert-box">
+                            <img src="img/alerts/siren.svg" alt="ERR">
+                            <p>Ошибка! Текст ошибки..</p>
+                            <button><img src="img/alerts/X.svg" alt="X"></button>
+                        </div>
+                        <div class="alert-box">
+                            <img src="img/alerts/warning.svg" alt="WRN">
+                            <p>Предупреждение! Текст предупреждения..</p>
+                            <button><img src="img/alerts/X.svg" alt="X"></button>
+                        </div>
+                        <div class="alert-box">
+                            <img src="img/alerts/check-circle.svg" alt="SUC">
+                            <p>Успех! Текст успеха..</p>
+                            <button><img src="img/alerts/X.svg" alt="X"></button>
+                        </div> -->
+            </div>
+        </div>
+        <footer>
+            <div class="frame">
+                <div class="wrapper">
+                    <div class="left">
+                        <div class="logo">
+                            <img src="img/media/logo.svg" alt="ЧН">
+                            <p>Каждый день лучшие мероприятия рядом с вами.</p>
+                        </div>
+                        <img src="img/media/madetag.svg" alt="Сделано в России!">
+                    </div>
+                    <img id="footer-line" src="img/background/footer-line.svg" alt="|">
+                    <div class="center">
+                        <div class="menu">
+                            <p>Меню <img src="img/background/menu-line.svg" alt="--#"></p>
+                            <div class="list">
+                                <a href="index.html"><button onclick="scrollToElement('.introductory')">Главная страница</button></a>
+                                <button onclick="scrollToElement('nav')">Мероприятия</button>
+                                <a href="settings.html"><button>Личный кабинет</button></a>
+                                <a href="https://forms.yandex.ru/u/676aa22302848f3cb17e91af/"><button>Стать орган-ом</button></a>
+                            </div>
+                        </div>
+                        <div class="policy">
+                            <a href="https://yandex.ru/legal/rules/index.html"><button>Terms & Condition</button></a>
+                            <a href="https://yandex.ru/legal/confidential/index.html"><button>Privacy Policy</button></a>
+                            <a href="https://yandex.ru/legal/cookies_policy/"><button>Cookie Policy</button></a>
+                        </div>
+                    </div>
+                    <img id="footer-line" src="img/background/footer-line.svg" alt="|">
+                    <div class="right">
+                        <div class="media">
+                            <a href="https://vk.com/"><button><img src="img/media/VkontakteLogo.svg" alt="VK"></button></a>
+                            <a href="https://instagram.com/"><button><img src="img/media/InstagramLogo.svg" alt="I"></button></a>
+                            <a href="https://web.telegram.org/"><button><img src="img/media/TelegramLogo.svg" alt="TG"></button></a>
+                            <a href="https://www.tiktok.com/"><button><img src="img/media/TiktokLogo.svg" alt="TT"></button></a>
+                            <a href="https://www.youtube.com/"><button><img src="img/media/YoutubeLogo.svg" alt="YT"></button></a>
+                        </div>
+                        <p>support.sthnnew@yandex.ru</p>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>©️ 2024 cyril_methodius. All right reserved</p>
+                </div> 
+            </div>      
+        </footer>
+    </div>
+</body>
+</html>

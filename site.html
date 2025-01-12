@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="img/media/logo.svg">
+
+    <script type="module" src="lib/js/activation.js"></script>
+    <script type="module" src="lib/js/site.js"></script>
+    <script type="module" src="lib/js/verify.js"></script>
+
+    <title>• Активные мероприятия</title>
+</head>
+<body id="site">
+    <div class="container">
+        <div class="frame">
+            <header>
+                <div class="logo">
+                    <img src="img/media/full-logo.svg" alt="ЧТО-ТО НОВОЕ">
+                </div>
+                <div class="search">
+                    <div class="search-wrapp">
+                        <img src="img/background/button-pattern/magnifying-glass.svg" alt="">
+                        <input type="text" name="" id="search-input" placeholder="Поиск">
+                    </div>
+                    <div class="city">
+                        <img src="img/background/button-pattern/map-pin.svg" alt="">
+                        <p data-city="true">Город</p>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="statistics">
+                        <div id="favorites" class="statistic">
+                            <img src="img/background/button-pattern/folder-Star.svg" alt="">
+                            <p>Избранные</p>
+                            <p id="statisticFavorite">(NaN)</p>
+                        </div>
+                        <div id="posts" class="statistic">
+                            <img src="img/background/button-pattern/newspaper-clipping.svg" alt="">
+                            <p id="statisticCreate">NaN</p>
+                        </div>
+                        <div id="likes" class="statistic">
+                            <img src="img/background/button-pattern/heart.svg" alt="">
+                            <p id="statisticLike">NaN</p>
+                        </div>
+                    </div>
+                    <div class="user-wrapp">
+                        <div class="user-block">
+                            <div class="user">
+                                <p id="user-initials" data-initials="true">ИФ</p>
+                            </div>
+                            <div class="user-info">
+                                <p id="name" data-user="true">Имя Фамилия</p>
+                                <p id="email" data-email="true">example@example.ru</p>
+                            </div>
+                        </div>
+                        <div class="button-block">
+                            <a href="settings.html"><button><img src="img/background/button-pattern/gear-six.svg" alt="⚙️">Настройки</button></a>
+                            <button id="exit" onclick="logOut()"><img src="img/background/button-pattern/door-open2.svg" alt="🚪">Выход</button>
+                        </div>
+                    </div>                       
+                </div>
+                
+            </header>
+            <nav>
+                <p onclick="openPage('cinema')">🎬Кино</p>
+                <p onclick="openPage('concert')">🪗Концерты</p>
+                <p onclick="openPage('theatre')">🎭Театр</p>
+                <p onclick="openPage('sport')">🏅Спорт</p>
+            </nav>
+            <div class="event-in">
+                <p data-city-event="true">Кино в городе</p><img src="img/background/button-pattern/PersonSimpleHike.svg" alt="">
+            </div>
+            <div class="cinema">
+                <div class="today">
+                    <div class="title">
+                        <p>В кино сегодня</p> <img src="img/background/button-pattern/clockCountdown.svg" alt="">
+                    </div>
+                    <div id="today" class="posts">
+                        <div class="event">
+                            <img src="img/uploaded/1734532534169.webp" alt="">
+                            <p class="event-title">Название мероприятия</p>
+                            <p class="event-date">Сегодня в 12:30</p>
+                            <div class="action-block">
+                                <button id="likes"><img src="img/background/button-pattern/heart.svg" alt=""> <p>0</p></button>
+                                <button id="favorites"><img src="img/background/button-pattern/folder-Star.svg" alt=""> 0</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nears">
+                    <div class="title">
+                        <p>Кино в ближайшие дни</p> <img src="img/background/button-pattern/Calendar.svg" alt="">
+                    </div>
+                    <div id="nears" class="posts">
+                        <div class="event">
+                            <img src="img/uploaded/1734532534169.webp" alt="">
+                            <p class="event-title">Название мероприятия</p>
+                            <p class="event-date">Завтра в 12:30</p>
+                            <div class="action-block">
+                                <button id="likes"><img src="img/background/button-pattern/heart.svg" alt=""> 0</button>
+                                <button id="favorites"><img src="img/background/button-pattern/folder-Star.svg" alt=""> 0</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="favorites">
+                    <div class="title">
+                        <p>Добавили в избранное</p> <img src="img/background/button-pattern/PushPin.svg" alt="">
+                    </div>
+                    <div id="favorites" class="posts">
+                        <div class="event">
+                            <img src="img/uploaded/1734532534169.webp" alt="">
+                            <p class="event-title">Название мероприятия</p>
+                            <p class="event-date">Сегодня в 12:30</p>
+                            <div class="action-block">
+                                <button id="likes"><img src="img/background/button-pattern/heart.svg" alt=""> 0</button>
+                                <button id="favorites"><img src="img/background/button-pattern/folder-Star.svg" alt=""> 0</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="concert">
+                <div class="today">
+                    <div class="title">
+                        <p>Концерты сегодня</p> <img src="img/background/button-pattern/clockCountdown.svg" alt="">
+                    </div>
+                    <div id="today" class="posts">
+                        <div class="event">
+                            <img src="img/uploaded/1734532534169.webp" alt="">
+                            <p class="event-title">Название мероприятия</p>
+                            <p class="event-date">Сегодня в 12:30</p>
+                            <div class="action-block">
+                                <button id="likes"><img src="img/background/button-pattern/heart.svg" alt=""> 0</button>
+                                <button id="favorites"><img src="img/background/button-pattern/folder-Star.svg" alt=""> 0</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nears">
+                    <div class="title">
+                        <p>Ожидаемые концерты</p> <img src="img/background/button-pattern/Calendar.svg" alt="">
+                    </div>
+                    <div id="nears" class="posts">
+                        <div class="event">
+                            <img src="img/uploaded/1734532534169.webp" alt="">
+                            <p class="event-title">Название мероприятия</p>
+                            <p class="event-date">Завтра в 12:30</p>
+                            <div class="action-block">
+                                <button id="likes"><img src="img/background/button-pattern/heart.svg" alt=""> 0</button>
+                                <button id="favorites"><img src="img/background/button-pattern/folder-Star.svg" alt=""> 0</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="favorites">
+                    <div class="title">
+                        <p>Добавили в избранное</p> <img src="img/background/button-pattern/PushPin.svg" alt="">
+                    </div>
+                    <div id="favorites" class="posts">
+                        <div class="event">
+                            <img src="img/uploaded/1734532534169.webp" alt="">
+                            <p class="event-title">Название мероприятия</p>
+                            <p class="event-date">Сегодня в 12:30</p>
+                            <div class="action-block">
+                                <button id="likes"><img src="img/background/button-pattern/heart.svg" alt=""> 0</button>
+                                <button id="favorites"><img src="img/background/button-pattern/folder-Star.svg" alt=""> 0</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="theatre">
+                <div class="nears">
+                    <div class="title">
+                        <p>Спектакли в ближайшие дни</p> <img src="img/background/button-pattern/Calendar.svg" alt="">
+                    </div>
+                    <div id="theatre" class="posts">
+                        <div class="event">
+                            <img src="img/uploaded/1734532534169.webp" alt="">
+                            <p class="event-title">Название мероприятия</p>
+                            <p class="event-date">Завтра в 12:30</p>
+                            <div class="action-block">
+                                <button id="likes"><img src="img/background/button-pattern/heart.svg" alt=""> 0</button>
+                                <button id="favorites"><img src="img/background/button-pattern/folder-Star.svg" alt=""> 0</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="favorites">
+                    <div class="title">
+                        <p>Добавили в избранное</p> <img src="img/background/button-pattern/PushPin.svg" alt="">
+                    </div>
+                    <div id="favorites" class="posts">
+                        <div class="event">
+                            <img src="img/uploaded/1734532534169.webp" alt="">
+                            <p class="event-title">Название мероприятия</p>
+                            <p class="event-date">Сегодня в 12:30</p>
+                            <div class="action-block">
+                                <button id="likes"><img src="img/background/button-pattern/heart.svg" alt=""> 0</button>
+                                <button id="favorites"><img src="img/background/button-pattern/folder-Star.svg" alt=""> 0</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sport">
+                <div class="nears">
+                    <div class="title">
+                        <p>Хоккейные матчи</p> <img src="img/background/button-pattern/Hockey.svg" alt="">
+                    </div>
+                    <div id="hockey" class="posts">
+                        <div class="event">
+                            <img src="img/uploaded/1734532534169.webp" alt="">
+                            <p class="event-title">Название мероприятия</p>
+                            <p class="event-date">Сегодня в 12:30</p>
+                            <div class="action-block">
+                                <button id="likes"><img src="img/background/button-pattern/heart.svg" alt=""> 0</button>
+                                <button id="favorites"><img src="img/background/button-pattern/folder-Star.svg" alt=""> 0</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nears">
+                    <div class="title">
+                        <p>Единоборства</p> <img src="img/background/button-pattern/Person.svg" alt="">
+                    </div>
+                    <div id="martial-arts" class="posts">
+                        <div class="event">
+                            <img src="img/uploaded/1734532534169.webp" alt="">
+                            <p class="event-title">Название мероприятия</p>
+                            <p class="event-date">Завтра в 12:30</p>
+                            <div class="action-block">
+                                <button id="likes"><img src="img/background/button-pattern/heart.svg" alt=""> 0</button>
+                                <button id="favorites"><img src="img/background/button-pattern/folder-Star.svg" alt=""> 0</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="favorites">
+                    <div class="title">
+                        <p>Добавили в избранное</p> <img src="img/background/button-pattern/PushPin.svg" alt="">
+                    </div>
+                    <div id="favorites" class="posts">
+                        <div class="event">
+                            <img src="img/uploaded/1734532534169.webp" alt="">
+                            <p class="event-title">Название мероприятия</p>
+                            <p class="event-date">Сегодня в 12:30</p>
+                            <div class="action-block">
+                                <button id="likes"><img src="img/background/button-pattern/heart.svg" alt=""> 0</button>
+                                <button id="favorites"><img src="img/background/button-pattern/folder-Star.svg" alt=""> 0</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alerts">
+                <!-- <div class="alert-box">
+                            <img src="img/alerts/siren.svg" alt="ERR">
+                            <p>Ошибка! Текст ошибки..</p>
+                            <button><img src="img/alerts/X.svg" alt="X"></button>
+                        </div>
+                        <div class="alert-box">
+                            <img src="img/alerts/warning.svg" alt="WRN">
+                            <p>Предупреждение! Текст предупреждения..</p>
+                            <button><img src="img/alerts/X.svg" alt="X"></button>
+                        </div>
+                        <div class="alert-box">
+                            <img src="img/alerts/check-circle.svg" alt="SUC">
+                            <p>Успех! Текст успеха..</p>
+                            <button><img src="img/alerts/X.svg" alt="X"></button>
+                        </div> -->
+            </div>
+        </div>
+        <footer>
+            <div class="frame">
+                <div class="wrapper">
+                    <div class="left">
+                        <div class="logo">
+                            <img src="img/media/logo.svg" alt="ЧН">
+                            <p>Каждый день лучшие мероприятия рядом с вами.</p>
+                        </div>
+                        <img src="img/media/madetag.svg" alt="Сделано в России!">
+                    </div>
+                    <img id="footer-line" src="img/background/footer-line.svg" alt="|">
+                    <div class="center">
+                        <div class="menu">
+                            <p>Меню <img src="img/background/menu-line.svg" alt="--#"></p>
+                            <div class="list">
+                                <a href="index.html"><button onclick="scrollToElement('.introductory')">Главная страница</button></a>
+                                <button onclick="scrollToElement('nav')">Мероприятия</button>
+                                <a href="settings.html"><button>Личный кабинет</button></a>
+                                <a href="https://forms.yandex.ru/u/676aa22302848f3cb17e91af/"><button>Стать орган-ом</button></a>
+                            </div>
+                        </div>
+                        <div class="policy">
+                            <a href="https://yandex.ru/legal/rules/index.html"><button>Terms & Condition</button></a>
+                            <a href="https://yandex.ru/legal/confidential/index.html"><button>Privacy Policy</button></a>
+                            <a href="https://yandex.ru/legal/cookies_policy/"><button>Cookie Policy</button></a>
+                        </div>
+                    </div>
+                    <img id="footer-line" src="img/background/footer-line.svg" alt="|">
+                    <div class="right">
+                        <div class="media">
+                            <a href="https://vk.com/"><button><img src="img/media/VkontakteLogo.svg" alt="VK"></button></a>
+                            <a href="https://instagram.com/"><button><img src="img/media/InstagramLogo.svg" alt="I"></button></a>
+                            <a href="https://web.telegram.org/"><button><img src="img/media/TelegramLogo.svg" alt="TG"></button></a>
+                            <a href="https://www.tiktok.com/"><button><img src="img/media/TiktokLogo.svg" alt="TT"></button></a>
+                            <a href="https://www.youtube.com/"><button><img src="img/media/YoutubeLogo.svg" alt="YT"></button></a>
+                        </div>
+                        <p>support.sthnnew@yandex.ru</p>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>©️ 2024 cyril_methodius. All right reserved</p>
+                </div> 
+            </div>      
+        </footer>
+    </div>
+</body>
+</html>

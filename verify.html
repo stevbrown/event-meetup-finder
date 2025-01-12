@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="img/media/logo.svg">
+
+    <script type="module" src="lib/js/activation.js"></script>
+    <script type="module" src="lib/js/verify.js"></script>
+
+    <script>
+		fetch('http://127.0.0.1:3000/api/check-auth', {
+		method: 'GET',
+		credentials: 'include'
+		})
+		.then(response => {
+			if (response.ok) {
+				window.location.href = 'site.html';
+			}
+		})
+		.catch(error => console.error('Ошибка:', error));
+	</script>
+
+    <title>• Верификация</title>
+</head>
+<body id="verify-page">
+    <div class="container">
+        <div class="frame">
+            <header>
+                <div class="logo">
+                    <a href="index.html"><img src="img/media/full-logo.svg" alt="ЧТО-ТО НОВОЕ"></a>
+                </div>
+            </header>
+            <div class="main">
+                <div class="authorization visible">
+                    <img class="auth" src="img/background/city.svg">
+                    <div class="box">
+                        <div class="title">
+                            <p class="reg">С возвращением!</p>
+                            <p class="step">auth</p>
+                        </div>
+                        <div class="wrapper">
+                            <div class="inputs">
+                                <div class="input">
+                                    <img src="img/background/button-pattern/hand-waving.svg" alt="Л">
+                                    <input id="a-login-in" type="text" maxlength="50" placeholder="Логин, почта... Что скажешь?" oninput="validateLogin(event)" onblur="validateCheckLogin(event)">
+                                </div>
+                                <div class="input">
+                                    <img src="img/background/button-pattern/key.svg" alt="П">
+                                    <input id="a-password-in" type="password" maxlength="255" placeholder="Отлично! Теперь пароль.." oninput="blockCyrillic(event)" onblur="validateCheckPassword(event)">
+                                </div>
+                            </div>
+                            <div class="wrapper">
+                                <button class="next" onclick="authorizationDone()">Авторизоваться <img src="img/background/button-pattern/fingerpoint.svg" alt="@"></button>
+                                <button class="newuser" onclick="signUp()">У меня еще нет аккаунта!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="registration">
+                    <div class="wrapper-steps">
+                        <div id="step1" class="step1">
+                            <img class="auth" src="img/background/city.svg">
+                            <div class="box">
+                                <div class="title">
+                                    <p class="reg">Добро пожаловать!</p>
+                                    <p class="step">reg</p>
+                                </div>
+                                <div class="wrapper">
+                                    <div class="inputs">
+                                        <div class="input">
+                                            <img src="img/background/button-pattern/hand-waving.svg" alt="Л">
+                                            <input id="login-in" type="text" maxlength="50" placeholder="Придумай логин.." oninput="validateLogin(event)" onblur="validateCheckLogin(event)">
+                                        </div>
+                                        <div class="input">
+                                            <img src="img/background/button-pattern/key.svg" alt="П">
+                                            <input id="password-in" type="password" maxlength="255" placeholder="Отлично! Теперь пароль.." oninput="blockCyrillic(event)" onblur="validateCheckPassword(event)">
+                                        </div>
+                                        <div class="input">
+                                            <img src="img/background/button-pattern/keyhole.svg" alt="ПП">
+                                            <input id="confirmPassword-in" type="password" maxlength="255" placeholder="Давай-ка еще разок, чтобы без ошибок!" oninput="blockCyrillic(event)">
+                                        </div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <button class="next" onclick="nextStep()">Продолжить <img src="img/background/button-pattern/arrow-fat-lines-right.svg" alt="->"></button>
+                                        <button class="newuser" onclick="signIn()">У меня уже есть аккаунта!</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="step2" class="step2">
+                            <img class="auth" src="img/background/city.svg">
+                            <div class="box">
+                                <div class="title">
+                                    <p class="reg">Добро пожаловать!</p>
+                                    <p class="step">reg</p>
+                                </div>
+                                <div class="wrapper">
+                                    <div class="inputs">
+                                        <div class="input">
+                                            <img src="img/background/button-pattern/envelope-open.svg" alt="П">
+                                            <input id="email-in" type="email" maxlength="250" placeholder="Проверим, что почтовые голуби долетят туда, куда надо.." oninput="validateGmail(event)" onblur="validateCheckGmail(event)">
+                                        </div>
+                                        <div class="input">
+                                            <img src="img/background/button-pattern/user.svg" alt="И">
+                                            <input id="name-in" type="text" maxlength="50" placeholder="Как вас зовут? Чтобы не звать просто “Эй, ты!“" oninput="validateName(event)">
+                                        </div>
+                                        <div class="input">
+                                            <img src="img/background/button-pattern/users-three.svg" alt="Ф">
+                                            <input id="surname-in" type="text" maxlength="100" placeholder="Давайте фамилию – так вас точно не перепутают." oninput="validateName(event)">
+                                        </div>
+                                        <div class="wrapper">
+                                            <div class="inputDis">
+                                                <img src="img/background/button-pattern/gift.svg" alt="ДР">
+                                                <input id="dob-in" type="date" min="1900-01-01">
+                                            </div>
+                                            <div class="inputDis">
+                                                <img src="img/background/button-pattern/map-pin.svg" alt="Г">
+                                                <input id="city-in" list="cities" type="text" maxlength="100" placeholder="Где вы живете?" oninput="validateCity(event)">
+                                                <datalist id="cities"></datalist>
+                                            </div>
+                                        </div>                                       
+                                    </div>
+                                    <div class="wrapper">
+                                        <button class="next" onclick="finishRegistration()">Зарегистрироваться <img src="img/background/button-pattern/password.svg" alt="|**"></button>
+                                        <button class="newuser" onclick="signIn()">У меня уже есть аккаунта!</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="alerts">
+                    <!-- <div class="alert-box">
+                                <img src="img/alerts/siren.svg" alt="ERR">
+                                <p>Ошибка! Текст ошибки..</p>
+                                <button><img src="img/alerts/X.svg" alt="X"></button>
+                            </div>
+                            <div class="alert-box">
+                                <img src="img/alerts/warning.svg" alt="WRN">
+                                <p>Предупреждение! Текст предупреждения..</p>
+                                <button><img src="img/alerts/X.svg" alt="X"></button>
+                            </div>
+                            <div class="alert-box">
+                                <img src="img/alerts/check-circle.svg" alt="SUC">
+                                <p>Успех! Текст успеха..</p>
+                                <button><img src="img/alerts/X.svg" alt="X"></button>
+                            </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
